@@ -1,0 +1,50 @@
+# Created by Octave 4.2.1, Fri Apr 13 12:56:01 2018 GMT <unknown@unknown>
+# name: ref
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 1
+# name: mat
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 7
+# name: Fe
+# type: scalar
+1.189242700385312
+
+
+# name: Be
+# type: scalar
+4.862894036630292
+
+
+# name: Ti
+# type: scalar
+6.518246195491448
+
+
+# name: Ca
+# type: scalar
+50.66763616554374
+
+
+# name: K
+# type: scalar
+138.9963464641134
+
+
+# name: eth
+# type: scalar
+0.9916977832781675
+
+
+# name: th
+# type: scalar
+0.9916977832781675
+
+
+
+
+
+
