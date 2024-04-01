@@ -19,7 +19,7 @@ _constant_exp_FevBe.m_ – Calibrates the production rate of Cl-36 from Fe again
 
 _constant_exp_FevK.m_ – Calibrates the production rate of Cl-36 from Fe against Cl-36 in feldspar using a constant-exposure geomorphic model.
 
-_constant_exp_K.m_ – Calibrates the production rate of Cl-36 from K against Be-10 in quartz using a constant-exposure geomorphic model that considers differential decay.
+_constant_exp_K.m_ – Calibrates the production rate of Cl-36 from neutron capture against Be-10 in quartz using a constant-exposure geomorphic model that considers differential decay.
 
 _Owens_FevBe.m_ – Runs constant_exp_FevBe for the Owens Valley samples and propagates error using a finite difference approximation to the partial derivatives. 
 
