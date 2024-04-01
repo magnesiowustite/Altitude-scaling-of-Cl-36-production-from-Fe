@@ -1,5 +1,5 @@
 %% Calibrates the Cl-36 production rate on Fe against Be-10 in qtz for a
-%% constant-exposure geomorphic model.
+%% constant-exposure geomorphic model. Does not consider differential attenuation.
 
 function out = constant_exp_FevBe(N10,N36m,thickness,Misc_prod,lambdaeff,...
   lambdaFe,Pmu,P10s,S_Fe,Conc_Fe)
@@ -11,7 +11,7 @@ lambda36 = -log(1/2)/3.01E5;
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Calculations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Compute thickness factors
 F_Be = lambdaeff/(thickness)*(1-e^(-thickness/lambdaeff));
-F_Fe = lambdaFe/(thickness)*(1-e^(-thickness/lambdaFe));
+F_Fe = lambdaeff/(thickness)*(1-e^(-thickness/lambdaeff));
 
 %Solve Be-10 for erosion rate
 t = 10;

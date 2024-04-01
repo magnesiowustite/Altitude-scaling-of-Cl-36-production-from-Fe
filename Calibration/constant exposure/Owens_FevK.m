@@ -32,29 +32,29 @@ eProd_fs = dataK(1,4);
 
 %first compute the production rate
 out = constant_exp_FevK(N36mt,N36fs,Prod_fs,Misc_mt,S_Fe,Conc_Fe,...
-   thickness,lambdaeff,lambdaFe);
+   thickness);
 
 %now compute partial derivatives and errors
 
 %N36fs
 dout = constant_exp_FevK(N36mt,(N36fs+0.001*N36fs),Prod_fs,Misc_mt,S_Fe,Conc_Fe,...
-  thickness,lambdaeff,lambdaFe);
+  thickness);
 dN36fs = (dout.P36m_Fe - out.P36m_Fe)/(N36fs*.001);
 %N36m
 dout = constant_exp_FevK((N36mt+0.001*N36mt),N36fs,Prod_fs,Misc_mt,S_Fe,Conc_Fe,...
-  thickness,lambdaeff,lambdaFe);
+  thickness);
 dN36mt = (dout.P36m_Fe - out.P36m_Fe)/(N36mt*.001);
 %N36m_misc
 dout = constant_exp_FevK(N36mt,N36fs,Prod_fs,(Misc_mt+0.001*Misc_mt),S_Fe,Conc_Fe,...
-  thickness,lambdaeff,lambdaFe);
+  thickness);
 dmisc = (dout.P36m_Fe - out.P36m_Fe)/(Misc_mt*.001);
 %Prod_fs
 dout = constant_exp_FevK(N36mt,N36fs,(Prod_fs+0.001*Prod_fs),Misc_mt,S_Fe,Conc_Fe,...
-  thickness,lambdaeff,lambdaFe);
+  thickness);
 dN36Prod_fs = (dout.P36m_Fe - out.P36m_Fe)/(Prod_fs*.001);
 %Conc_Fe
 dout = constant_exp_FevK(N36mt,N36fs,Prod_fs,Misc_mt,S_Fe,(Conc_Fe+0.001*Conc_Fe),...
-  thickness,lambdaeff,lambdaFe);
+  thickness);
 dconcFe = (dout.P36m_Fe - out.P36m_Fe)/(Conc_Fe*.001);
 
 %compute error

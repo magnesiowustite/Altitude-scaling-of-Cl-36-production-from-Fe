@@ -163,8 +163,8 @@ set(h3,'color','k','linestyle','none','linewidth',1.5,'marker','o',...
 'markerfacecolor','r','markersize',10,...
 'markeredgecolor','k');
 
-ylabel('^{36}Cl/^{10}Be',"fontweight","normal","fontsize",16);
-xlabel('^{10}Be (atoms g^{-1})',"fontweight","normal","fontsize",16);
+ylabel('^{36}Cl_{K-fs.}/^{10}Be_{qtz}',"fontweight","normal","fontsize",16);
+xlabel('^{10}Be_{qtz} (atoms g^{-1})',"fontweight","normal","fontsize",16);
 
 text(150000,4.55,'steady erosion','fontsize',16)
 text(150000,3.7,'constant exposure','fontsize',16)

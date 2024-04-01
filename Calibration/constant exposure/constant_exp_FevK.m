@@ -1,14 +1,14 @@
 %% Calibrates the Cl-36 production rate on K against Cl-36 in feldspar for a
-%% constant-exposure geomorphic model.
+%% constant-exposure geomorphic model. Does not consider differential attenuation.
 
 function out = constant_exp_FevK(N36mt,N36fs,Prod_fs,Misc_mt,S_Fe,Conc_Fe,...
-  thickness,lambdaeff,lambdaFe)
+  thickness)
+
+  lambdaeff = 176
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Calculations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-F_eff = lambdaeff/(thickness)*(1-e^(-thickness/lambdaeff));
-F_Fe = lambdaFe/(thickness)*(1-e^(-thickness/lambdaFe));
 
-P36Fe = (F_eff/F_Fe*N36mt/N36fs*(Prod_fs)-Misc_mt);
+P36Fe = (N36mt/N36fs*(Prod_fs)-Misc_mt);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
