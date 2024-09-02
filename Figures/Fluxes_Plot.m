@@ -25,7 +25,7 @@ subplot(2,1,1);
 h = subplot(2,1,1);
 p = get(h, 'position')
 p(3) = .8
-p(4) = .2*1200/900
+%p(4) = .225*1200/900
 set(h, 'position', p);
 
 for i = 1:4
@@ -275,13 +275,15 @@ box on
  set(AX2,'XLim',[0 100000])
 
  xlabel('Energy (MeV)','fontsize',20)
- ylabel(AX1(1),'Normalized Neutron Flux')
- ylabel(AX1(2),'millibarns')
- legend([H2,H5,H4,H1],'Fe(n,x)^{36}Cl','^{16}O(n,x)^{10}Be','K(n,x)^{36}Cl','normalized flux','Location','southwest')
+ ylabel(AX1(1),'Normalized neutron flux relative to sea level','fontsize',18)
+ ylabel(AX1(2),'Reaction cross section (millibarns)')
+ h1 = legend([H2,H5,H4,H1],'Fe(n,x)^{36}Cl','O(n,x)^{10}Be','K(n,x)^{36}Cl','norm. flux','Location','southwest','fontsize',16)
  legend boxoff
+ set(h1,'position',[.075,.453,0,0])
  text(20000,2.08,'4300 m','fontsize',18)
  text(20000,1.85,'3300 m','fontsize',18)
  text(20000,1.43,'1700 m','fontsize',18)
+ text(1.8,2.125,'A','fontsize',21)
 
 
 end
@@ -298,9 +300,9 @@ subplot(2,1,2);
 %Adjust position of subplots
 h = subplot(2,1,2);
 p = get(h, 'position')
-p(2) = p(2) + 0.3;
+p(2) = p(2) + 0.325;
 p(3) = .8
-p(4) = .05*1200/775
+p(4) = 1.35*.06*1200/775
 set(h, 'position', p);
 
 %loop over pressures
@@ -518,20 +520,24 @@ box on
  set(AX2(2),'YLim',[.1 1000])
  set(AX2,'XLim',[0 100000])
  xlabel('Energy (MeV)','fontsize',20)
- ylabel(AX1(1),'Normalized Proton Flux')
- ylabel(AX1(2),'millibarns')
- legend([H2,H5,H4,H1],'Fe(p,x)^{36}Cl','^{16}O(p,x)^{10}Be','K(p,x)^{36}Cl','normalized flux','Location','southwest')
+ ylabel(AX1(1),'Normalized proton flux relative to sea level','fontsize',18)
+ ylabel(AX1(2),'Reaction cross section (millibarns)')
+ h1 = legend([H2,H5,H4,H1],'Fe(p,x)^{36}Cl','O(p,x)^{10}Be','K(p,x)^{36}Cl','norm. flux','Location','southwest','fontsize',16)
+ set(h1,'position',[.075,.0875,0,0])
  legend boxoff
+
  text(20000,4.12,'4300 m','fontsize',18)
  text(20000,3.3,'3300 m','fontsize',18)
  text(20000,2.05,'1700 m','fontsize',18)
+ text(1.8,5.2,'B','fontsize',21)
+
 
 end
 
 %Print results
 
 set(gcf, "paperunits", "points", "papersize", [900, 1200], 'PaperPosition', [0 0 900 1200]);
-print -dpdf -color Normalized_Fluxes.pdf
+%print -dpdf -color Normalized_Fluxes.pdf
 print -dpng -color Plot_Normalized_Fluxes.png
 
 

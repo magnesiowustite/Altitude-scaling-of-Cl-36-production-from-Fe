@@ -89,11 +89,11 @@ set(H5,'color','k','linestyle','none','marker','o','markersize',13,'markerfaceco
 set(H6,'color','k','linestyle','none','marker','o','markersize',13,'markerfacecolor',[.9,.9,.9])
 
 %Plot Averages
-H9 = errorbar(Avg_1700_Cl(:,1),mean(altitudes_1700),Avg_1700_Cl(:,2),'>');
-H10 = errorbar(Avg_1700_Be(:,1),mean(altitudes_1700),Avg_1700_Be(:,2),'>');
+H9 = errorbar(Avg_1700_Cl(:,1),mean(altitudes_1700-.0175),Avg_1700_Cl(:,2),'>');
+H10 = errorbar(Avg_1700_Be(:,1),mean(altitudes_1700+.0175),Avg_1700_Be(:,2),'>');
 H11 = errorbar(Avg_3300(:,1),mean(altitudes_3300),Avg_3300(:,2),'>');
-H12 = errorbar(data_4300_Cl(:,1),[6.0297],data_4300_Cl(:,2),'>');
-H13 = errorbar(data_4300_Be(:,1),[6.0297],data_4300_Be(:,2),'>');
+H12 = errorbar(data_4300_Cl(:,1),[6.0297-.0175],data_4300_Cl(:,2),'>');
+H13 = errorbar(data_4300_Be(:,1),[6.0297+.0175],data_4300_Be(:,2),'>');
 
 set(H9,'color','k','linestyle','none','marker','d','markersize',15,'markerfacecolor',[.9,.5,.2],'linewidth',2);
 set(H10,'color','k','linestyle','none','marker','o','markersize',12,'markerfacecolor',[0,0,.75],'linewidth',2);
@@ -116,9 +116,13 @@ expo = coeff(1,3)+coeff(1,2)*(1013.25-pressure)+coeff(1,1)*(1013.25-pressure).^2
 
 H11 = plot(expo,pressure./100,'linewidth',4,'linestyle',':','color','k','marker','none');
 
-legend([H11,H0,H1,H10,H9,H5,H4],'polynomial fit','^{36}Cl_{K}/^{10}Be_{qtz}','^{36}Cl_{Fe}/^{36}Cl_{K}',...
-'Site mean, Fe/Be','Site mean, Fe/K','Qtz. Sample','Fs. Sample','Location','southeast','fontsize',12);
+legend([H11,H0,H1,H10,H9,H5,H4],'polynomial fit','^{36}Cl_{Fe}/^{10}Be_{qtz} model','^{36}Cl_{Fe}/^{36}Cl_{K} model',...
+'^{36}Cl_{Fe}/^{10}Be_{qtz} site mean','^{36}Cl_{Fe}/^{36}Cl_{K} site mean','^{36}Cl_{Fe}/^{10}Be_{qtz} sample','^{36}Cl_{Fe}/^{36}Cl_{K} sample','Location','southeast','fontsize',12);
 legend boxoff
+
+text(1.2,8.3,'Owens Valley','fontsize',18,'fontangle','italic')
+text(1.06,6.8,'Sierra Nevada','fontsize',18,'fontangle','italic')
+text(1.13,6,'Mt. Evans','fontsize',18,'fontangle','italic')
 
 %Write results to file
 set(gcf, "paperunits", "points", "papersize", [900, 600], 'PaperPosition', [0 0 900 600]);

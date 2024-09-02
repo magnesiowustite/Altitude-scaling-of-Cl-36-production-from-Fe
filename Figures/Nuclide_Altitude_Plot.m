@@ -123,5 +123,5 @@ ylabel ('Pressure (hPa)',"fontweight","normal","fontsize",20);
 
 % Write results to file
 set(gcf, "paperunits", "points", "papersize", [900, 600], 'PaperPosition', [0 0 900 600]);
-print -dpdf -color altitude_model.pdf
+%print -dpdf -color altitude_model.pdf
 print -dpng -color altitude_model.png

@@ -155,13 +155,32 @@ N10 = xlsread('Input data.xlsx','Inputs','B5');
 N10e = xlsread('Input data.xlsx','Inputs','C5');
 N36 = xlsread('Input data.xlsx','Inputs','B11');
 N36e = xlsread('Input data.xlsx','Inputs','C11');
-ratio = N36/N10;
-ratioe = ratio*sqrt((N10e/N10)^2+(N36e/N36)^2);
 
-h3 = errorbar(N10, ratio, 2*N10e, 2*ratioe,"#~>-*");
-set(h3,'color','k','linestyle','none','linewidth',1.5,'marker','o',...
-'markerfacecolor','r','markersize',10,...
-'markeredgecolor','k');
+%Compute covariance matrix and plot error ellipse
+for i = 1:10000
+N10r(i) = normrnd(N10,N10e);
+N36r(i) = normrnd(N36,N36e);
+end
+R = N36r./N10r;
+
+Sigma = cov(N10r,R)
+
+    p = 0.95;
+    s = -2*log(1-p);
+    [V,D] = eig(Sigma*s)
+    t = linspace(0,2*pi);
+    a = (V*sqrt(D))*[cos(t(:))'; sin(t(:))']
+    h3 = plot(a(1,:)+N10,a(2,:)+N36/N10);
+    set(h3,'color',[.5,0,.5],'linewidth',1.5)
+
+%Plot point with errobox
+
+##ratio = N36/N10;
+##ratioe = ratio*sqrt((N10e/N10)^2+(N36e/N36)^2);
+##h3 = errorbar(N10, ratio, 2*N10e, 2*ratioe,"#~>-*");
+##set(h3,'color','k','linestyle','none','linewidth',1.5,'marker','o',...
+##'markerfacecolor','r','markersize',10,...
+##'markeredgecolor','k');
 
 ylabel('^{36}Cl_{K-fs.}/^{10}Be_{qtz}',"fontweight","normal","fontsize",16);
 xlabel('^{10}Be_{qtz} (atoms g^{-1})',"fontweight","normal","fontsize",16);
@@ -172,7 +191,7 @@ text(2500000,4.3,'Mt. Evans','fontsize',16)
 
   % Write results to file
     set(gcf, "paperunits", "points", "papersize", [900, 600], 'PaperPosition', [0 0 900 600]);
-   print -dpdf -color Banana.pdf
+##   print -dpdf -color Banana.pdf
    print -dpng -color Banana.png
 
 
